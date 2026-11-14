@@ -1,0 +1,768 @@
+/* ==========================================================
+   Viaja Colombia — moderno, sobrio y con color
+   Mobile first · azul marino, petróleo, terracota y ocre
+   ========================================================== */
+
+:root {
+    --tinta: #12263a;
+    --texto: #4a5a68;
+    --fondo: #f3efe8;
+    --blanco: #ffffff;
+    --borde: #e2dbcf;
+
+    --petroleo: #1d5c6e;
+    --marino: #16324f;
+    --bosque: #2f6b55;
+    --terracota: #b4573c;
+    --ocre: #c3913c;
+    --ocre-claro: #e0b560;
+    --vino: #7a2e4a;
+
+    --radio: 20px;
+    --fuente: 'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    font-family: var(--fuente);
+    color: var(--texto);
+    line-height: 1.65;
+    background-color: var(--fondo);
+    -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+    background-color: var(--ocre);
+    color: #ffffff;
+}
+
+
+/* ---------- Indicador de versión (apoyo para pruebas) ---------- */
+
+.mensaje {
+    padding: 6px 12px;
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #ffffff;
+    background-color: var(--terracota);
+}
+
+.mensaje::after {
+    content: "Versión celular";
+}
+
+
+/* ---------- Cabecera ---------- */
+
+.cabecera {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 14px 22px 10px;
+    background-color: rgba(22, 50, 79, 0.88);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: #ffffff;
+}
+
+.logo::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(135deg, var(--ocre-claro), var(--terracota));
+    border-radius: 3px;
+    transform: rotate(45deg);
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2px;
+}
+
+.menu a {
+    position: relative;
+    padding: 7px 14px;
+    text-decoration: none;
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: #c9d6e2;
+    border-radius: 999px;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.menu a:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.menu a:focus-visible,
+.boton:focus-visible,
+.portada-boton:focus-visible {
+    outline: 3px solid var(--ocre-claro);
+    outline-offset: 3px;
+}
+
+
+/* ---------- Portada ---------- */
+
+.portada {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 500px;
+    overflow: hidden;
+    color: #ffffff;
+    background-color: var(--marino);
+}
+
+/* Fotos reales que cambian solas */
+.portada-fondo {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.portada-fondo span {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: portada-foto 24s infinite;
+}
+
+.portada-fondo span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.portada-fondo span:nth-child(2) {
+    animation-delay: 6s;
+}
+
+.portada-fondo span:nth-child(3) {
+    animation-delay: 12s;
+}
+
+.portada-fondo span:nth-child(4) {
+    animation-delay: 18s;
+}
+
+@keyframes portada-foto {
+    0% {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+
+    6% {
+        opacity: 1;
+    }
+
+    26% {
+        opacity: 1;
+    }
+
+    34% {
+        opacity: 0;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1);
+    }
+}
+
+/* Degradados para dar legibilidad al texto */
+.portada::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        linear-gradient(90deg, rgba(15, 34, 56, 0.85) 0%, rgba(15, 34, 56, 0.45) 55%, rgba(15, 34, 56, 0.1) 100%),
+        linear-gradient(0deg, rgba(15, 34, 56, 0.6) 0%, rgba(15, 34, 56, 0) 40%);
+}
+
+/* Avión que cruza el cielo con su estela */
+.portada::after {
+    content: "";
+    position: absolute;
+    top: 14%;
+    left: -280px;
+    z-index: 1;
+    width: 260px;
+    height: 56px;
+    background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cg transform='rotate(90 32 32)'%3E%3Cpath fill='%23ffffff' d='M32 2c2 0 3 3 3 7v15l25 14v5l-25-7v14l7 5v4l-10-3-10 3v-4l7-5V36L4 43v-5l25-14V9c0-4 1-7 3-7z'/%3E%3C/g%3E%3C/svg%3E") right center / 56px 56px no-repeat,
+        linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.7)) left center / 200px 3px no-repeat;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.35));
+    animation: portada-avion 20s linear 2s infinite;
+}
+
+@keyframes portada-avion {
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(calc(100vw + 340px), -70px);
+    }
+}
+
+.portada-contenido {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 64px 22px 72px;
+}
+
+.portada-etiqueta {
+    display: inline-block;
+    margin-bottom: 18px;
+    padding: 6px 14px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ocre-claro);
+    background-color: rgba(15, 34, 56, 0.6);
+    border: 1px solid rgba(224, 181, 96, 0.55);
+    border-radius: 999px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.portada h1 {
+    max-width: 13ch;
+    margin-bottom: 18px;
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.4);
+}
+
+.portada h1 em {
+    font-style: normal;
+    background: linear-gradient(100deg, var(--ocre-claro), #f4d58d 60%, var(--terracota));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.portada p {
+    max-width: 46ch;
+    margin-bottom: 30px;
+    font-size: 1.02rem;
+    line-height: 1.7;
+    color: #e3ebf2;
+}
+
+.portada-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.portada-boton {
+    display: inline-block;
+    padding: 13px 26px;
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #12263a;
+    background-color: var(--ocre-claro);
+    border: 2px solid var(--ocre-claro);
+    border-radius: 999px;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.portada-boton:hover {
+    background-color: #f0c978;
+    border-color: #f0c978;
+    transform: translateY(-2px);
+}
+
+.portada-boton.secundario {
+    color: #ffffff;
+    background-color: transparent;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.portada-boton.secundario:hover {
+    background-color: rgba(255, 255, 255, 0.14);
+    border-color: #ffffff;
+}
+
+
+/* ---------- Contenido ---------- */
+
+.contenido {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 64px 18px 8px;
+}
+
+.seccion-titulo {
+    margin-bottom: 38px;
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    color: var(--marino);
+}
+
+.seccion-titulo::before {
+    content: "Destinos";
+    display: block;
+    margin-bottom: 12px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--terracota);
+}
+
+.seccion-titulo::after {
+    content: "";
+    display: block;
+    width: 56px;
+    height: 4px;
+    margin-top: 16px;
+    background: linear-gradient(90deg, var(--terracota), var(--ocre));
+    border-radius: 2px;
+}
+
+
+/* ---------- Destinos ---------- */
+
+.destinos {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 26px;
+    counter-reset: destino;
+}
+
+/* Cada tarjeta toma un tono distinto de la paleta */
+.tarjeta:nth-child(6n+1) {
+    --c: var(--petroleo);
+}
+
+.tarjeta:nth-child(6n+2) {
+    --c: var(--terracota);
+}
+
+.tarjeta:nth-child(6n+3) {
+    --c: var(--bosque);
+}
+
+.tarjeta:nth-child(6n+4) {
+    --c: var(--vino);
+}
+
+.tarjeta:nth-child(6n+5) {
+    --c: #a87a22;
+}
+
+.tarjeta:nth-child(6n+6) {
+    --c: var(--marino);
+}
+
+.tarjeta {
+    --c: var(--petroleo);
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    box-shadow: 0 8px 22px -14px rgba(18, 38, 58, 0.4);
+    counter-increment: destino;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+/* Numeración sobre la foto */
+.tarjeta::before {
+    content: counter(destino, decimal-leading-zero);
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 3;
+    padding: 4px 11px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #ffffff;
+    background-color: rgba(15, 34, 56, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 999px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.tarjeta:hover {
+    transform: translateY(-8px);
+    border-color: var(--c);
+    box-shadow: 0 26px 40px -18px rgba(18, 38, 58, 0.5);
+}
+
+.tarjeta img.imagen {
+    display: block;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+.tarjeta:hover img.imagen {
+    transform: scale(1.07);
+}
+
+.contenido-tarjeta {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 22px 24px 26px;
+    background-color: var(--blanco);
+}
+
+/* línea de color que se extiende al pasar el mouse */
+.contenido-tarjeta::before {
+    content: "";
+    width: 36px;
+    height: 4px;
+    margin-bottom: 16px;
+    background-color: var(--c);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+}
+
+.tarjeta:hover .contenido-tarjeta::before {
+    width: 72px;
+}
+
+.contenido-tarjeta h3 {
+    margin-bottom: 10px;
+    font-size: 1.28rem;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--tinta);
+}
+
+.contenido-tarjeta p {
+    flex-grow: 1;
+    margin-bottom: 22px;
+    font-size: 0.93rem;
+    line-height: 1.7;
+    color: var(--texto);
+}
+
+
+/* ---------- Botón ---------- */
+
+.boton {
+    align-self: flex-start;
+    padding: 10px 22px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--c);
+    background-color: transparent;
+    border: 2px solid var(--c);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+}
+
+.boton::after {
+    content: " →";
+    display: inline-block;
+    transition: transform 0.25s ease;
+}
+
+.boton:hover {
+    color: #ffffff;
+    background-color: var(--c);
+}
+
+.boton:hover::after {
+    transform: translateX(4px);
+}
+
+.boton:active {
+    transform: scale(0.97);
+}
+
+
+/* ---------- Galería ---------- */
+
+.galeria {
+    max-width: 1240px;
+    margin: 72px 12px 0;
+    padding: 48px 18px 30px;
+    background:
+        radial-gradient(circle at 100% 0%, rgba(195, 145, 60, 0.28), transparent 45%),
+        linear-gradient(135deg, var(--marino) 0%, var(--petroleo) 100%);
+    border-radius: 28px;
+    box-shadow: 0 26px 50px -24px rgba(22, 50, 79, 0.75);
+}
+
+.galeria .seccion-titulo {
+    color: #ffffff;
+}
+
+.galeria .seccion-titulo::before {
+    content: "Galería";
+    color: var(--ocre-claro);
+}
+
+.galeria-descripcion {
+    margin: -14px 0 28px;
+    font-size: 0.97rem;
+    color: #c0d3df;
+}
+
+.galeria-fotos {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+    overflow-x: auto;
+    padding: 6px 4px 22px;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+}
+
+.fotos {
+    flex: 0 0 230px;
+    width: 230px;
+    height: 310px;
+    object-fit: cover;
+    border-radius: 18px;
+    cursor: pointer;
+    scroll-snap-align: start;
+    box-shadow: 0 14px 26px -14px rgba(0, 0, 0, 0.7);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+}
+
+.galeria-fotos:hover .fotos {
+    filter: brightness(0.75) saturate(0.85);
+}
+
+.galeria-fotos .fotos:hover {
+    filter: none;
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 26px 36px -14px rgba(0, 0, 0, 0.8);
+}
+
+.galeria-fotos::-webkit-scrollbar {
+    height: 6px;
+}
+
+.galeria-fotos::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+}
+
+.galeria-fotos::-webkit-scrollbar-thumb {
+    background-color: var(--ocre-claro);
+    border-radius: 10px;
+}
+
+
+/* ---------- Footer ---------- */
+
+.footer {
+    margin-top: 80px;
+    padding: 38px 20px 42px;
+    text-align: center;
+    font-size: 0.86rem;
+    background-color: var(--marino);
+    border-top: 4px solid transparent;
+    border-image: linear-gradient(90deg, var(--terracota), var(--ocre), var(--bosque), var(--petroleo)) 1;
+}
+
+.footer p {
+    margin: 4px 0;
+    color: #aebfcd;
+}
+
+.footer p:last-child {
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--ocre-claro);
+}
+
+
+/* ==========================================================
+   Tablet
+   ========================================================== */
+
+@media (min-width: 768px) {
+
+    .mensaje::after {
+        content: "Versión Tablet";
+    }
+
+    .cabecera {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 14px 32px;
+    }
+
+    .portada {
+        min-height: 580px;
+    }
+
+    .portada-contenido {
+        padding: 90px 40px 96px;
+    }
+
+    .portada h1 {
+        font-size: 3.7rem;
+    }
+
+    .contenido {
+        padding: 84px 24px 8px;
+    }
+
+    .seccion-titulo {
+        font-size: 2.5rem;
+    }
+
+    .destinos {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+    }
+
+    .galeria {
+        margin: 84px 24px 0;
+        padding: 56px 32px 34px;
+    }
+}
+
+
+/* ==========================================================
+   Escritorio
+   ========================================================== */
+
+@media (min-width: 1024px) {
+
+    .mensaje::after {
+        content: "Versión Escritorio";
+    }
+
+    .cabecera {
+        padding: 16px 56px;
+    }
+
+    .logo {
+        font-size: 1.45rem;
+    }
+
+    .menu a {
+        padding: 8px 18px;
+        font-size: 0.92rem;
+    }
+
+    .portada {
+        min-height: 660px;
+    }
+
+    .portada-contenido {
+        padding: 110px 56px 120px;
+    }
+
+    .portada h1 {
+        font-size: 4.7rem;
+    }
+
+    .portada p {
+        font-size: 1.12rem;
+    }
+
+    .destinos {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    .tarjeta img.imagen {
+        height: 240px;
+    }
+
+    .galeria {
+        margin: 96px auto 0;
+        padding: 64px 48px 42px;
+    }
+
+    .fotos {
+        flex-basis: 260px;
+        width: 260px;
+        height: 350px;
+    }
+}
+
+
+/* Respeta a quienes prefieren menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+
+    html,
+    .galeria-fotos {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
+
+    .portada-fondo span {
+        animation: none;
+    }
+
+    .portada-fondo span:first-child {
+        opacity: 1;
+    }
+
+    .portada::after {
+        display: none;
+    }
+}
